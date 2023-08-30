@@ -3,7 +3,7 @@ import 'package:movies_planet/data/model/mp_search.dart';
 import '../../../utils/mp_functions.dart';
 
 class SearchModel extends MpSearch {
-  SearchModel(
+  const SearchModel(
       {required super.tmdbID,
       required super.posterUrl,
       required super.title,

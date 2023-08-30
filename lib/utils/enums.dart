@@ -1,3 +1,3 @@
 enum RequestStatus { loading, loaded, error }
 
-enum GetAllRequestStatus { loading, loaded, error, fetchMoreError }
+enum FetchRequestStatus { loading, loaded, error, fetchMoreError }

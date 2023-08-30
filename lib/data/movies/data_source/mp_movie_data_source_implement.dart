@@ -9,10 +9,10 @@ import 'package:dio/dio.dart';
 class MpMoviesDataSourceImplement extends MpRemoteDataSource {
   @override
   Future<List<MovieModel>> getAllPopularMovies(int movieId) async {
-    final response = await Dio().get(MpApi.nowPlayingMoviesPath);
+    final response = await Dio().get(MpApi.getPopularMoviePath(movieId));
     if (response.statusCode == 200) {
       return List<MovieModel>.from(
-          (response.data['result'] as List).map((e) => MovieModel.fromMap(e)));
+          (response.data['results'] as List).map((e) => MovieModel.fromMap(e)));
     } else {
       throw ServerException(
           errorMessageModel: ErrorMessageModel.fromMap(response.data));
@@ -24,7 +24,7 @@ class MpMoviesDataSourceImplement extends MpRemoteDataSource {
     final response = await Dio().get(MpApi.getTopRatedMoviePath(page));
     if (response.statusCode == 200) {
       return List<MovieModel>.from(
-          (response.data['result'] as List).map((e) => MovieModel.fromMap(e)));
+          (response.data['results'] as List).map((e) => MovieModel.fromMap(e)));
     } else {
       throw ServerException(
           errorMessageModel: ErrorMessageModel.fromMap(response.data));
